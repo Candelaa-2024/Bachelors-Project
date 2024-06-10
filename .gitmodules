@@ -1,0 +1,3 @@
+[submodule "logfrontend"]
+	path = logfrontend
+	url = https://github.com/gerald-x/log-frontend.git
