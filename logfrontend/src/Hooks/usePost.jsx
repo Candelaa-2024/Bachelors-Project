@@ -21,6 +21,8 @@ const usePost = () => {
       });
       const jsonData = await response.json();
 
+      console.log(jsonData)
+      
       setIsLoading(false);
       if (!response.ok) {
         setError(jsonData.msg);

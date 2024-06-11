@@ -6,7 +6,7 @@ import { storeAccesstoken, storeRefreshToken } from "../Store/appSlice";
 
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -23,18 +23,18 @@ const LoginForm = () => {
     setPassword(event.target.value);
   };
 
-  const handleEmail = (event) => {
-    setEmail(event.target.value.trim());
+  const handleUsername = (event) => {
+    setUsername(event.target.value.trim());
   };
 
   const handleLogin = async () => {
     const loginDetails = {
-      email: email,
+      username: username,
       password: password,
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/auth/login/", {
+      const response = await fetch("http://127.0.0.1:8000/auth/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,15 +45,15 @@ const LoginForm = () => {
 
 
         if (!response.ok) {
-            setError(data.msg)
+            setError(data?.detail ? data?.detail : "Usernasme and Password fields are required")
             throw new Error(`HTTP error! status: ${response.status}`);
         }
       
       console.log("Data variable is: ", data)
-      const {access_token, refresh_token} = data
+      const {access, refresh} = data
       
-      dispatch(storeAccesstoken(access_token)); // Assuming the response contains an accessToken field
-      dispatch(storeRefreshToken(refresh_token))
+      dispatch(storeAccesstoken(access)); // Assuming the response contains an accessToken field
+      dispatch(storeRefreshToken(refresh))
       
       console.log("Token retrieved")
 
@@ -66,16 +66,16 @@ const LoginForm = () => {
   return (
     <div className="">
       <Form.Group className="mb-4" controlId="formBasicEmail">
-        <Form.Label className="block w-max">Email address</Form.Label>
+        <Form.Label className="block w-max">Username</Form.Label>
         <Form.Control
           variant="success"
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={handleEmail}
+          type="text"
+          placeholder="Enter Username"
+          value={username}
+          onChange={handleUsername}
         />
         <Form.Text className="text-muted block w-max">
-          We'll never share your email with anyone else.
+          Usernames are unique with each user.
         </Form.Text>
       </Form.Group>
 

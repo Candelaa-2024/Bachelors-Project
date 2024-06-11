@@ -15,7 +15,7 @@ const RouteWrapper = ({ children }) => {
     // Make a request to validate the token
     const validateToken = async ()=>{
         try {
-            const response = await fetch("http://127.0.0.1:5000/auth/token-validate/", {
+            const response = await fetch("http://127.0.0.1:8000/auth/token-validate/", {
               method: "GET",
               headers: {
                 "Authorization": `Bearer ${accessToken}`

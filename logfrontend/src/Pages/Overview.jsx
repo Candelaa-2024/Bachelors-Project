@@ -8,7 +8,9 @@ const Overview = () => {
   return (
     <>
       <Dashboard>
-        <BmiCalculator/>
+        {/**
+         * <BmiCalculator/>
+         */}
 
       </Dashboard>
     </>

@@ -1,4 +1,5 @@
 import { Nav } from "react-bootstrap"
+import Background from "../Assets/logs.jpg" 
 import { Link, useNavigate } from "react-router-dom"
 import { FiLogOut } from "react-icons/fi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
@@ -20,8 +21,14 @@ const SideNav = ({additionalClasses})=>{
 
     return(
         <>
-            <Nav defaultActiveKey="/" className={`${additionalClasses} flex-column bg-success md:max-[991px]:w-[40%] w-[30%]  lg:w-1/4 py-5 ps-4`} data-bs-theme="dark" >
-                <Link to={`/`} className="text-start text-white fs-3 mb-12 dancing-script-font">Nutritionix</Link>
+            <Nav defaultActiveKey="/" className={`${additionalClasses} flex-column md:max-[991px]:w-[40%] w-[30%]  lg:w-1/4 py-5 ps-4`} data-bs-theme="dark" 
+                style={{
+                    backgroundImage: `url(${Background})`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                }}
+            >
+                <Link to={`/`} className="text-start text-white fs-3 mb-12 dancing-script-font">Logs</Link>
                 <Nav.Link href="/" className="text-white hover:text-white-50">
                     <div className="d-flex align-items-center">
                         <AiOutlineUnorderedList className="me-2" />Overview

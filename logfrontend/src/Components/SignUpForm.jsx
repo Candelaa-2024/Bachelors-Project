@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [error, setError] = useState(null)
+  const [username, setUsername] = useState(null)
   const {data, error:postError, postData} = usePost()
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -21,10 +22,11 @@ const LoginForm = () => {
   }
 
   const handleSubmit = () => {
-    postData("http://127.0.0.1:5000/auth/register/", {
+    postData("http://127.0.0.1:8000/auth/register/", {
       last_name: lastName,
       first_name: firstName,
       email: email,
+      username: username,
       password: password,
       confirm_password: confirmPassword
     })
@@ -33,10 +35,10 @@ const LoginForm = () => {
   useEffect(()=>{
     if (data) {
       console.log("Data variable is: ", data)
-      const {access_token, refresh_token} = data
+      const {access, refresh} = data
       
-      dispatch(storeAccesstoken(access_token)); // Assuming the response contains an accessToken field
-      dispatch(storeRefreshToken(refresh_token))
+      dispatch(storeAccesstoken(access)); // Assuming the response contains an accessToken field
+      dispatch(storeRefreshToken(refresh))
       
       console.log("Token retrieved")
 
@@ -78,6 +80,23 @@ const LoginForm = () => {
             setData(event, setLastName, true)
           }}
         />
+      </Form.Group>
+
+      <Form.Group className="mb-4" controlId="">
+        <Form.Label className="block w-max">Username</Form.Label>
+        <Form.Control
+          required
+          variant="success"
+          type="text"
+          placeholder="Enter username"
+          value={username}
+          onChange={(event) => {
+            setData(event, setUsername, true)
+          }}
+        />
+        <Form.Text className="text-muted block w-max">
+          No two users can have the same username
+        </Form.Text>
       </Form.Group>
 
       <Form.Group className="mb-4" controlId="formBasicEmail">
