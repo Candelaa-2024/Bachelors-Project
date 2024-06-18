@@ -29,7 +29,7 @@ const LoginForm = () => {
 
   const handleLogin = async () => {
     const loginDetails = {
-      username: username,
+      username: username.toLowerCase(),
       password: password,
     };
 
@@ -75,7 +75,7 @@ const LoginForm = () => {
           onChange={handleUsername}
         />
         <Form.Text className="text-muted block w-max">
-          Usernames are unique with each user.
+          Usernames are unique with each user, and will be converted to lowercase.
         </Form.Text>
       </Form.Group>
 
