@@ -8,7 +8,7 @@ const Dashboard = ({children})=>{
             <div className="basis-full grow flex">
                 <SideNav additionalClasses={`d-none d-md-flex`}/>
 
-                <Container className="pt-10">
+                <Container className="pt-10 h-[100vh] overflow-auto">
                     {children}
                 </Container>
             </div>

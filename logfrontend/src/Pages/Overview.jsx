@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Dashboard, BmiCalculator } from "../Components";
+import { BsTable } from "../Components";
 
 const Overview = () => {
   const { accessToken, refreshToken } = useSelector(state => state.appData)
@@ -11,6 +12,8 @@ const Overview = () => {
         {/**
          * <BmiCalculator/>
          */}
+
+         <BsTable/>
 
       </Dashboard>
     </>
