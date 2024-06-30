@@ -3,7 +3,7 @@ import Background from "../Assets/logs.jpg"
 import { Link, useNavigate } from "react-router-dom"
 import { FiLogOut } from "react-icons/fi";
 import { AiOutlineUnorderedList } from "react-icons/ai";
-import { MdTrackChanges } from "react-icons/md"
+import { MdTrackChanges, MdPerson } from "react-icons/md"
 import { useDispatch } from "react-redux";
 import { clearTokens } from "../Store/appSlice";
 import useLogout from "../Hooks/useLogout";
@@ -36,9 +36,15 @@ const SideNav = ({additionalClasses})=>{
                 </Nav.Link>
 
             
-                <Nav.Link href="/track-weight" className="flex my-3 text-white">
+                <Nav.Link href="/track" className="flex my-3 text-white">
                     <div className="d-flex align-items-center ">
                         <MdTrackChanges className="me-2" /> Tracker
+                    </div>                    
+                </Nav.Link>
+
+                <Nav.Link href="/user-data" className="flex mb-3 text-white">
+                    <div className="d-flex align-items-center ">
+                        <MdPerson className="me-2" /> Users
                     </div>                    
                 </Nav.Link>
 

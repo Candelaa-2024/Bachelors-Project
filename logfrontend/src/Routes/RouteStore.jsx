@@ -6,7 +6,7 @@ import {
     RouterProvider,
 } from "react-router-dom"
 
-import { LoginView, Overview, SignUp, WeightTracker } from "../Pages"
+import { LoginView, Overview, SignUp, Tracker, UsersPage } from "../Pages"
 import { AuthOutlet } from "../Components"
 import RouteWrapper from "./RouteWrapper"
 
@@ -20,7 +20,8 @@ const router = createBrowserRouter(
             </Route>
 
             <Route path="/" element={ <RouteWrapper children={<Overview />} /> } />
-            <Route path="/track-weight" element={ <RouteWrapper children={<WeightTracker />} /> } />
+            <Route path="/track" element={ <RouteWrapper children={<Tracker />} /> } />
+            <Route path="/user-data" element={ <RouteWrapper children={<UsersPage />} /> } />
         </>
     )
 )

@@ -14,8 +14,6 @@ const BsTable = () => {
     <>
       {Object.keys(data).length !== 0 ? (
         <>
-          <h4 className="text-center text-black my-8">Todo User login Logs</h4>
-
           <Table striped bordered responsive hover variant="dark">
             <thead>
               <tr>
@@ -29,6 +27,9 @@ const BsTable = () => {
               {data.data.map((row, rowIndex) => (
                 <tr key={rowIndex}>
                   {row.map((cell, cellIndex) => (
+                    typeof cell === "boolean" ?
+                    <th key={cellIndex}>{cell.toString()}</th>
+                    :                    
                     <th key={cellIndex}>{cell}</th>
                   ))}
                 </tr>

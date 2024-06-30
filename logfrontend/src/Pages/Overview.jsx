@@ -11,9 +11,15 @@ const Overview = () => {
       <Dashboard>
         {/**
          * <BmiCalculator/>
-         */}
+        */}
+        
+        <h4 className="text-center text-black my-8">Todo User login Logs</h4>
 
-         <BsTable/>
+        <div className="h-[75vh] w-auto overflow-auto">
+          <BsTable/>
+        </div>
+
+        
 
       </Dashboard>
     </>
