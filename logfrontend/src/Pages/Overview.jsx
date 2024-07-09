@@ -1,26 +1,31 @@
-import { useSelector } from "react-redux";
-import { Dashboard, BmiCalculator } from "../Components";
+import { Button } from "react-bootstrap";
+import { Dashboard, FilterDropdown } from "../Components";
 import { BsTable } from "../Components";
+import { useDispatch } from "react-redux";
+import { storeFilter, storeFilterValue } from "../Store/appSlice";
 
 const Overview = () => {
-  const { accessToken, refreshToken } = useSelector(state => state.appData)
-    
-  console.log(accessToken, refreshToken)
+  //console.log(filter. filterValue)
+  const dispatch = useDispatch()
+
+  const resetFilter = ()=> {
+    dispatch(storeFilterValue(null))
+    dispatch(storeFilter(null))
+  }
   return (
     <>
       <Dashboard>
         {/**
          * <BmiCalculator/>
-        */}
-        
+         */}
+        <FilterDropdown />{" "}
+        <Button variant="success" onClick={resetFilter}>
+          Reset filter
+        </Button>
         <h4 className="text-center text-black my-8">Todo User login Logs</h4>
-
         <div className="h-[75vh] w-auto overflow-auto">
-          <BsTable/>
+          <BsTable />
         </div>
-
-        
-
       </Dashboard>
     </>
   );
